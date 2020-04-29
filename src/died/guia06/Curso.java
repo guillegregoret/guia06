@@ -2,6 +2,7 @@ package died.guia06;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import died.guia06.util.Registro;
@@ -36,8 +37,22 @@ public class Curso {
 	 * @return
 	 */
 	public Boolean inscribir(Alumno a) {
+
 		try {
-			log.registrar(this, "inscribir ",a.toString());
+			int materias_nivel=0;
+			for (int i = 0; i < a.getCursando().size(); i++) {
+				if(a.getCursando().get(i).getCicloLectivo()==this.cicloLectivo) {
+					materias_nivel++;
+				}
+			}
+			if(a.creditosObtenidos()>=this.creditosRequeridos && (this.cupo-this.inscriptos.size())>0 && materias_nivel<3) {
+				this.inscriptos.add(a);
+				log.registrar(this, "inscribir ",a.toString());
+				return true;
+			}else {
+				return false;
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +64,10 @@ public class Curso {
 	 * imprime los inscriptos en orden alfabetico
 	 */
 	public void imprimirInscriptos() {
+		
 		try {
+			Collections.sort(this.inscriptos, new CompAlfaberico());
+			System.out.println(this.inscriptos);
 			log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 		} catch (IOException e) {
 			e.printStackTrace();

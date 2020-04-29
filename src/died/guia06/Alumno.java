@@ -1,5 +1,6 @@
 package died.guia06;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,8 +13,8 @@ public class Alumno implements Comparable<Object>{
 
 	public int creditosObtenidos() {
 		Integer creditos=0;
-		for(Curso c : aprobados){
-			creditos+=c.getCreditos();
+		for (int i = 0; i < aprobados.size(); i++) {
+			creditos+=aprobados.get(i).getCreditos();
 		}
 		return creditos;
 	}
@@ -21,6 +22,11 @@ public class Alumno implements Comparable<Object>{
 	public void aprobar(Curso c) {
 		this.aprobados.add(c);
 		this.cursando.remove(c);
+	}
+
+	public Alumno() {
+		this.cursando = new ArrayList<Curso>();
+		this.aprobados = new ArrayList<Curso>();
 	}
 
 	public void inscripcionAceptada(Curso c) {
