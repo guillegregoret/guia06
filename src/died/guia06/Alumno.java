@@ -3,7 +3,7 @@ package died.guia06;
 import java.util.List;
 
 
-public class Alumno implements Comparable{
+public class Alumno implements Comparable<Object>{
 
 	private String nombre;
 	private Integer nroLibreta;
@@ -11,7 +11,11 @@ public class Alumno implements Comparable{
 	private List<Curso> aprobados;
 
 	public int creditosObtenidos() {
-		return 1;
+		Integer creditos=0;
+		for(Curso c : aprobados){
+			creditos+=c.getCreditos();
+		}
+		return creditos;
 	}
 
 	public void aprobar(Curso c) {
@@ -54,7 +58,10 @@ public class Alumno implements Comparable{
 	}
 
 	public void setCursando(List<Curso> cursando) {
-		this.cursando = cursando;
+		this.cursando=cursando;
+		/*for (int i = 0; i < cursando.size(); i++) {
+			this.cursando.add(cursando.get(i));
+		}*/
 	}
 
 	public List<Curso> getAprobados() {
@@ -62,7 +69,23 @@ public class Alumno implements Comparable{
 	}
 
 	public void setAprobados(List<Curso> aprobados) {
-		this.aprobados = aprobados;
+		this.aprobados=aprobados;
+		/*
+		for (int j = 0; j < aprobados.size(); j++) {
+			this.cursando.remove(aprobados.get(j));
+		}
+		for (int i = 0; i < aprobados.size(); i++) {
+			this.aprobados.add(aprobados.get(i));
+		}
+		*/
+		
+		
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	
