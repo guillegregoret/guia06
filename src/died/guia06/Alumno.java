@@ -13,8 +13,8 @@ public class Alumno implements Comparable<Object>{
 
 	public int creditosObtenidos() {
 		Integer creditos=0;
-		for (int i = 0; i < aprobados.size(); i++) {
-			creditos+=aprobados.get(i).getCreditos();
+		for (int i = 0; i < this.aprobados.size(); i++) {
+			creditos+=this.aprobados.get(i).getCreditos();
 		}
 		return creditos;
 	}

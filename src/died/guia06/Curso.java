@@ -15,7 +15,7 @@ public class Curso {
 	private List<Alumno> inscriptos;
 	private Integer creditos;
 	private Integer creditosRequeridos;
-	
+	private int materias_nivel=0;
 	private Registro log;
 	
 	public Curso() {
@@ -39,9 +39,11 @@ public class Curso {
 	public Boolean inscribir(Alumno a) {
 
 		try {
-			int materias_nivel=0;
+
+			materias_nivel=0;
+			
 			for (int i = 0; i < a.getCursando().size(); i++) {
-				if(a.getCursando().get(i).getCicloLectivo()==this.cicloLectivo) {
+				if(a.getCursando().get(i).getCicloLectivo().equals(this.cicloLectivo)) {
 					materias_nivel++;
 				}
 			}
@@ -67,7 +69,9 @@ public class Curso {
 		
 		try {
 			Collections.sort(this.inscriptos, new CompAlfaberico());
-			System.out.println(this.inscriptos);
+			for (int i = 0; i < this.inscriptos.size(); i++) {
+				System.out.println(this.inscriptos.get(i).getNombre());
+			}
 			log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 		} catch (IOException e) {
 			e.printStackTrace();
