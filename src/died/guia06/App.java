@@ -14,7 +14,24 @@ public class App {
 		
 		
 		System.out.println("Inscribir AMI");
-		System.out.println(c1.inscribir(a1));
+		try {
+		System.out.println("Inscribir a1");
+		c1.inscribirAlumno(a1);
+		System.out.println("Inscribir a2");
+		c1.inscribirAlumno(a2);
+		System.out.println("Inscribir a3");
+		c1.inscribirAlumno(a3);
+		System.out.println("Inscribir a4");
+		c1.inscribirAlumno(a4);
+	} catch(CreditosInsuficientesException e) {
+		System.err.println(e.getMessage());
+	} catch(CupoCompletoException e) {
+		System.err.println(e.getMessage());
+	} catch (RegistroAuditoriaException e) {
+		System.err.println(e.getMessage());
+	}
+		
+	/*	System.out.println(c1.inscribir(a1));
 		//Cupo restante: 2
 		System.out.println(c1.inscribir(a2));	
 		//Cupo restante: 1
@@ -22,7 +39,7 @@ public class App {
 		//Cupo restante: 0
 		System.out.println(c1.inscribir(a4));
 		//Sin cupo para inscribir, retorna false
-		
+		*/
 		System.out.println("Imprimir inscriptos AMI");
 		c1.imprimirInscriptos();
 		
@@ -33,8 +50,27 @@ public class App {
 		//a2.setAprobados(aprobados);
 		a3.setAprobados(aprobados);
 		//a4.setAprobados(aprobados);
-		
 		System.out.println("Inscribir AMII");
+		try {
+		System.out.println("Inscribir a1 a AMII");
+		c2.inscribirAlumno(a1);
+		System.out.println("Inscribir a2 a AMII");
+		c2.inscribirAlumno(a2);
+		System.out.println("Inscribir a3 a AMII");
+		c2.inscribirAlumno(a3);
+		System.out.println("Inscribir a4 a AMII");
+		c2.inscribirAlumno(a4);
+	} catch(CreditosInsuficientesException e) {
+		System.err.println(e.getMessage());
+	} catch(CupoCompletoException e) {
+		System.err.println(e.getMessage());
+	} catch (RegistroAuditoriaException e) {
+		System.err.println(e.getMessage());
+	}
+		
+		
+		/*
+		
 		System.out.println(c2.inscribir(a1));
 		//Cupo restante: 1
 		System.out.println(c2.inscribir(a2));	
@@ -43,6 +79,7 @@ public class App {
 		//Cupo restante: 0
 		System.out.println(c2.inscribir(a4));
 		//Creditos insuficienes y sin cupo para inscribir, retorna false
+		 */
 		System.out.println("Imprimir inscriptos AMII");
 		c2.imprimirInscriptos();
 	}
