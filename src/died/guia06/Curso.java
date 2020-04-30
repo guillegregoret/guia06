@@ -136,6 +136,19 @@ public class Curso {
 	public void setLog(Registro log) {
 		this.log = log;
 	}
+	public void inscribirAlumno(Alumno a) throws 	CreditosInsuficientesException,	RegistroAuditoriaException, CupoCompletoException {
+		try {
+			if(a.creditosObtenidos()<this.creditosRequeridos)
+				throw new CreditosInsuficientesException("Creditos obtenidos:"+a.creditosObtenidos()+", no alcanzan los requeridos:"+this.getCreditosRequeridos());
+			if(this.inscriptos.size()>=cupo)
+				throw new CupoCompletoException("El cupo ya esta completo");
+			log.registrar(this, "inscribir ",a.toString());
+			a.inscripcionAceptada(this);
+			inscriptos.add(a);
+		} catch(IOException e) {
+			throw new RegistroAuditoriaException();
+		}
+}
 
 
 

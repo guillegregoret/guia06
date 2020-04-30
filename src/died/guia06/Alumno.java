@@ -105,6 +105,8 @@ public class Alumno implements Comparable<Object>{
 		return "Alumno [nombre=" + nombre + ", nroLibreta=" + nroLibreta + "]";
 	}
 
+
+
 	
 	
 
