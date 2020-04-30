@@ -19,7 +19,6 @@ public class Curso {
 	private Registro log;
 	
 	public Curso() {
-		super();
 		this.inscriptos = new ArrayList<Alumno>();
 		this.log = new Registro();
 	}
@@ -37,7 +36,7 @@ public class Curso {
 	 * @return
 	 */
 	public Boolean inscribir(Alumno a) {
-
+			
 		try {
 
 			materias_nivel=0;
@@ -47,6 +46,7 @@ public class Curso {
 					materias_nivel++;
 				}
 			}
+
 			if(a.creditosObtenidos()>=this.creditosRequeridos && (this.cupo-this.inscriptos.size())>0 && materias_nivel<3) {
 				this.inscriptos.add(a);
 				log.registrar(this, "inscribir ",a.toString());
@@ -76,6 +76,17 @@ public class Curso {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public Curso(Integer id, String nombre, Integer cicloLectivo, Integer cupo, Integer creditos,
+			Integer creditosRequeridos) {
+		inscriptos = new ArrayList<Alumno>();
+		this.id = id;
+		this.nombre = nombre;
+		this.cicloLectivo = cicloLectivo;
+		this.cupo = cupo;
+		this.creditos = creditos;
+		this.creditosRequeridos = creditosRequeridos;
+		log = new Registro();
 	}
 	public Integer getId() {
 		return id;
@@ -125,6 +136,7 @@ public class Curso {
 	public void setLog(Registro log) {
 		this.log = log;
 	}
+
 
 
 }

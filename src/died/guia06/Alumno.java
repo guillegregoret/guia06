@@ -19,6 +19,13 @@ public class Alumno implements Comparable<Object>{
 		return creditos;
 	}
 
+	public Alumno(String nombre, Integer nroLibreta) {
+		this.cursando = new ArrayList<Curso>();
+		this.aprobados = new ArrayList<Curso>();
+		this.nombre = nombre;
+		this.nroLibreta = nroLibreta;
+	}
+
 	public void aprobar(Curso c) {
 		this.aprobados.add(c);
 		this.cursando.remove(c);
@@ -92,6 +99,10 @@ public class Alumno implements Comparable<Object>{
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public String toString() {
+		return "Alumno [nombre=" + nombre + ", nroLibreta=" + nroLibreta + "]";
 	}
 
 	
